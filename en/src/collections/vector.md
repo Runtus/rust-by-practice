@@ -9,26 +9,26 @@ fn main() {
     let arr: [u8; 3] = [1, 2, 3];
     
     let v = Vec::from(arr);
-    is_vec(v);
+    is_vec(&v);
 
     let v = vec![1, 2, 3];
-    is_vec(v);
+    is_vec(&v);
 
     // vec!(..) and vec![..] are same macros, so
     let v = vec!(1, 2, 3);
-    is_vec(v);
+    is_vec(&v);
     
     // In code below, v is Vec<[u8; 3]> , not Vec<u8>
     // USE Vec::new and `for` to rewrite the below code 
     let v1 = vec!(arr);
-    is_vec(v1);
+    is_vec(&v1);
  
     assert_eq!(v, v1);
 
     println!("Success!");
 }
 
-fn is_vec(v: Vec<u8>) {}
+fn is_vec(v: &Vec<u8>) {}
 ```
 
 
@@ -111,9 +111,9 @@ fn main() {
 
 
 ### Slicing
-A Vec can be mutable. On the other hand, slices are read-only objects. To get a slice, use `&`. 
+Immutable or mutable slices of Vecs can be taken, using `&` or `&mut`, respectively.
 
-In Rust, it’s more common to pass slices as arguments rather than vectors when you just want to provide read access. The same goes for `String` and `&str`.
+In Rust, it’s more common to pass immutable slices as arguments rather than vectors when you just want to provide read access, as this is more flexible (no move) and efficient (no copy). The same goes for `String` and `&str`.
 
 5. 🌟🌟
 ```rust,editable
@@ -129,14 +129,16 @@ fn main() {
     
     assert_eq!(slice1, slice2);
     
-    // Slices are read only
+    // A slice can also be mutable, in which
+    // case mutating it will mutate its underlying Vec.
     // Note: slice and &Vec are different
     let vec_ref: &mut Vec<i32> = &mut v;
     (*vec_ref).push(4);
     let slice3 = &mut v[0..3];
-    slice3.push(4);
+    slice3[3] = 42;
 
-    assert_eq!(slice3, &[1, 2, 3, 4]);
+    assert_eq!(slice3, &[1, 2, 3, 42]);
+    assert_eq!(v, &[1, 2, 3, 42]);
 
     println!("Success!");
 }

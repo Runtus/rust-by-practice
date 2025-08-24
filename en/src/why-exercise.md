@@ -10,7 +10,7 @@
 [![LICENSE](https://img.shields.io/badge/license-mit-green?style=flat)](https://github.com/sunface/rust-by-practice/blob/master/LICENSE)
 </div>
 
-This book was designed for easily diving into and get skilled with Rust, and it's very easy to use: All you need to do is to make each exercise compile without ERRORS and Panics !
+This book was designed for easily diving into and getting skilled with Rust, and it's very easy to use: All you need to do is to make each exercise compile without ERRORS and Panics !
 
 
 ## Reading online
@@ -23,7 +23,7 @@ This book was designed for easily diving into and get skilled with Rust, and it'
 
 We use [mdbook](https://rust-lang.github.io/mdBook/) building our exercises. You can run locally with below steps:
 ```shell
-$ git clone git@github.com:sunface/rust-by-practice.git
+$ git clone https://github.com/sunface/rust-by-practice
 $ cargo install mdbook
 $ cd rust-by-practice && mdbook serve en/ 
 ```
@@ -44,4 +44,4 @@ Although they are so awesome, we have our own secret weapons :)
 
 - The overall difficulties are a bit higher and from easy to super hard: easy 🌟 medium 🌟🌟 hard 🌟🌟🌟 super hard 🌟🌟🌟🌟
 
-**What we want to do is fill in the gap between learning and getting started with real projects.**
+**What we want to do is to fill the gap between learning and getting started with real projects!**
